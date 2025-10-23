@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Elite development team portfolio showcasing cutting-edge talent"
+    />
+    <title>Development Squad | Team Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ========================================
+           MODERN PORTFOLIO STYLES
+           Dark theme with vibrant accents
+           ======================================== */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-dark: #0a0e27;
+        --bg-card: #151932;
+        --bg-elevated: #1a1f3a;
+        --accent-cyan: #00f5ff;
+        --accent-purple: #b794f6;
+        --accent-pink: #ff6b9d;
+        --accent-orange: #ffa726;
+        --text-primary: #ffffff;
+        --text-secondary: #a0aec0;
+        --text-muted: #718096;
+        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Animated background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at 20% 30%,
+            rgba(102, 126, 234, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 70%,
+            rgba(181, 23, 158, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 50% 50%,
+            rgba(0, 245, 255, 0.1) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+        animation: bgShift 20s ease infinite;
+      }
+
+      @keyframes bgShift {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ========================================
+           HEADER SECTION
+           ======================================== */
+
+      .hero {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 2rem;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-cyan),
+          transparent
+        );
+        opacity: 0.3;
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          #fff 0%,
+          var(--accent-cyan) 50%,
+          var(--accent-purple) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+        animation: titleGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes titleGlow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
+        }
+        50% {
+          filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.5));
+        }
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        font-weight: 300;
+        letter-spacing: 0.05em;
+      }
+
+      .hero-accent {
+        color: var(--accent-cyan);
+        font-weight: 500;
+      }
+
+      /* ========================================
+           TEAM GRID
+           ======================================== */
+
+      .team-section {
+        padding: 4rem 0 6rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--text-primary),
+          var(--text-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-description {
+        font-size: 1.125rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+      }
+
+      .team-card {
+        background: var(--bg-card);
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .team-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-1);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .team-card:nth-child(1)::before {
+        background: var(--gradient-1);
+      }
+      .team-card:nth-child(2)::before {
+        background: var(--gradient-2);
+      }
+      .team-card:nth-child(3)::before {
+        background: var(--gradient-3);
+      }
+      .team-card:nth-child(4)::before {
+        background: var(--gradient-4);
+      }
+      .team-card:nth-child(5)::before {
+        background: var(--gradient-5);
+      }
+
+      .team-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .team-card:hover::before {
+        opacity: 1;
+      }
+
+      .card-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--bg-elevated), var(--bg-dark));
+      }
+
+      .card-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+          filter 0.4s ease;
+        filter: grayscale(0.3);
+      }
+
+      .team-card:hover .card-image-wrapper img {
+        transform: scale(1.1);
+        filter: grayscale(0);
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(10, 14, 39, 0.8) 100%
+        );
+      }
+
+      .card-body {
+        padding: 2rem;
+      }
+
+      .member-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .member-name a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .member-name a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-cyan);
+        transition: width 0.3s ease;
+      }
+
+      .member-name a:hover {
+        color: var(--accent-cyan);
+      }
+
+      .member-name a:hover::after {
+        width: 100%;
+      }
+
+      .member-role {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.05em;
+      }
+
+      /* ========================================
+           FOOTER
+           ======================================== */
+
+      .footer {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+      @media (max-width: 768px) {
+        .hero {
+          min-height: 50vh;
+          padding: 3rem 1rem;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.125rem;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .card-body {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">SOLUTION SQUAD</h1>
+        <p class="hero-subtitle">
+          Delivering value, <span class="hero-accent">sprint by sprint</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <main class="team-section">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="section-title">Meet The Team</h2>
+          <p class="section-description">
+            One team. One goal. Turning vision into lasting results.
+          </p>
+        </header>
+
+        <div class="team-grid">
+          <!-- Team Member 1 -->
+          <article class="team-card">
+            <div class="card-image-wrapper">
+              <img
+                src="/images/houssameddine-photo.jpg"
+                alt="Beradai Houssameddine Diaelhak"
+                loading="lazy"
+              />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-body">
+              <h3 class="member-name">
+                <a href="/profiles/houssameddine-diaelhak-beradai.html"
+                  >Beradai Houssameddine Diaelhak</a
+                >
+              </h3>
+              <p class="member-role">// Scrum Master</p>
+            </div>
+          </article>
+
+          <!-- Team Member 2 -->
+          <article class="team-card">
+            <div class="card-image-wrapper">
+              <img
+                src="images/islam.png"
+                alt="Sahli Mohamed Islam"
+                loading="lazy"
+              />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-body">
+              <h3 class="member-name">
+                <a href="profiles/mohamedislam-sahli.html"
+                  >Sahli Mohamed Islam</a
+                >
+              </h3>
+              <p class="member-role">// Mobile developer</p>
+            </div>
+          </article>
+          <!-- Team Member 3 -->
+          <article class="team-card">
+            <div class="card-image-wrapper">
+              <img
+                src="/images/cilia-mouhoun.JPG"
+                alt="Mouhoun Cilia"
+                loading="lazy"
+              />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-body">
+              <h3 class="member-name">
+                <a href="/profiles/mouhoun-cilia.html">Mouhoun Cilia</a>
+              </h3>
+              <p class="member-role">// Frontend Developer</p>
+            </div>
+          </article>
+          <!-- Team Member 4 -->
+          <article class="team-card">
+            <div class="card-image-wrapper">
+              <img src="images/aya.jpg" alt="Aya Brahimi" loading="lazy" />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-body">
+              <h3 class="member-name">
+                <a href="profiles/aya-brahimi.html">Aya Brahimi</a>
+              </h3>
+              <p class="member-role">// UI/UX Developer</p>
+            </div>
+          </article>
+          <!-- Team Member 5 -->
+          <article class="team-card">
+            <div class="card-image-wrapper">
+              <img
+                src="images/enzo-chaabnia.png"
+                alt="Enzo Chaabnia"
+                loading="lazy"
+              />
+              <div class="card-overlay"></div>
+            </div>
+            <div class="card-body">
+              <h3 class="member-name">
+                <a href="profiles/enzo-chaabnia.html">Enzo Chaabnia</a>
+              </h3>
+              <p class="member-role">// Backend Developer</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 DEV SQUAD • Academic Portfolio Project</p>
+      </div>
+    </footer>
+  </body>
+</html>
