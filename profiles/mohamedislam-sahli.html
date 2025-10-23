@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sahli Mohamed Islam - developer Profile"
+    />
+    <title>Sahli Mohamed Islam | Mobile developer </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-dark: #0a0e27;
+        --bg-card: #151932;
+        --bg-elevated: #1a1f3a;
+        --accent-primary: #667eea;
+        --accent-secondary: #764ba2;
+        --accent-glow: #00f5ff;
+        --text-primary: #ffffff;
+        --text-secondary: #a0aec0;
+        --text-muted: #718096;
+      }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse at 20% 30%,
+            rgba(102, 126, 234, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 70%,
+            rgba(118, 75, 162, 0.15) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Header */
+      .profile-header {
+        padding: 3rem 0 2rem;
+        text-align: center;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-family: "JetBrains Mono", monospace;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+      }
+
+      .back-link:hover {
+        color: var(--accent-glow);
+        transform: translateX(-5px);
+      }
+
+      .back-link::before {
+        content: "←";
+        font-size: 1.2rem;
+      }
+
+      .profile-hero {
+        margin: 3rem 0;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem;
+        position: relative;
+      }
+
+      .profile-image::before {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        border-radius: 50%;
+        z-index: -1;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--bg-dark);
+      }
+
+      .profile-name {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--text-primary),
+          var(--accent-glow)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .profile-title {
+        font-size: 1.25rem;
+        color: var(--accent-primary);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+      }
+
+      /* Content Sections */
+      .profile-content {
+        padding: 2rem 0 4rem;
+      }
+
+      .content-section {
+        background: var(--bg-card);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .section-title::before {
+        content: "";
+        width: 4px;
+        height: 1.75rem;
+        background: linear-gradient(
+          180deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        border-radius: 2px;
+      }
+
+      .bio-text {
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .skill-item {
+        background: var(--bg-elevated);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(102, 126, 234, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-primary);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      }
+
+      .skill-item:hover::before {
+        left: 100%;
+      }
+
+      /* GitHub Link */
+      .github-section {
+        text-align: center;
+      }
+
+      .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: linear-gradient(
+          135deg,
+          var(--accent-primary),
+          var(--accent-secondary)
+        );
+        color: var(--text-primary);
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      }
+
+      .github-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+      }
+
+      .github-link::before {
+        content: "⚡";
+        font-size: 1.3em;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+
+        .content-section {
+          padding: 2rem 1.5rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-name {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="profile-header">
+
+        <div class="profile-hero">
+          <div class="profile-image">
+            <img
+              src="../images/islam.png"
+              alt="Sahli Mohamed Islam"
+            />
+          </div>
+          <h1 class="profile-name">Sahli Mohamed Islam</h1>
+          <p class="profile-title">// mobile developer , ai & cyber security enthusiast</p>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="profile-content">
+        <!-- About Section -->
+        <section class="content-section">
+          <h2 class="section-title">About Me</h2>
+          <p class="bio-text">
+            Mohamed Islam Sahli passionate mobile developer with experience building intuitive and efficient apps. 
+            Beyond development, I have a deep interest in AI and cybersecurity, exploring how intelligent systems can be designed securely 
+            and responsibly. I thrive on learning cutting-edge technologies, solving complex problems, 
+            and creating digital solutions that make a real impact.
+          </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="content-section">
+          <h2 class="section-title">Technical Competencies</h2>
+          <ul class="skills-grid">
+            <li class="skill-item">Python</li>
+            <li class="skill-item">automation</li>
+            <li class="skill-item">penetration testing</li>
+            <li class="skill-item">numpy</li>
+            <li class="skill-item">scikit-learn</li>
+            <li class="skill-item">Docker</li>
+            <li class="skill-item">Vulnerability Scanning</li>
+            <li class="skill-item">SQL</li>
+            <li class="skill-item">Git</li>
+            <li class="skill-item">flutter</li>
+            <li class="skill-item">pandas</li>
+            <li class="skill-item">Agile/Scrum</li>
+          </ul>
+        </section>
+
+        <!-- GitHub Section -->
+        <section class="content-section github-section">
+          <h2 class="section-title">Connect with Me</h2>
+          <a
+            href="https://github.com/Mohamedislam19"
+            class="github-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View GitHub Profile
+          </a>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; 2025 DEV SQUAD • Academic Portfolio Project</p>
+      </footer>
+    </div>
+  </body>
+</html>
